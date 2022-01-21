@@ -33,17 +33,11 @@ _SUPPORTED_VERSIONS = [
 _DEFAULT_VERSION = datasets.Version("1.0.0", "Initial Version")
 
 
-class ImagewangConfig(datasets.BuilderConfig):
-    """BuilderConfig for consumer complaints dataset."""
 
-    def __init__(self, name, **kwargs):
-        assert "description" not in kwargs
-        super().__init__(name=name, description=f"{name} variant.", version=datasets.Version("1.0.0"), **kwargs)
-
-        self.url = _BASE_DOWNLOAD_URL
+_url = _BASE_DOWNLOAD_URL
 
 
-class Imagewang(datasets.GeneratorBasedBuilder):
+class consumerComplaints(datasets.GeneratorBasedBuilder):
     """Imagewang dataset."""
 
     #BUILDER_CONFIGS = [ImagewangConfig(name=name) for name in _BASE_CONFIG_NAMES]
@@ -53,9 +47,9 @@ class Imagewang(datasets.GeneratorBasedBuilder):
     def _info(self):
         features = datasets.Features(
             {
-                'date_received' : datasets.Value("timestamp"),
-                'product': datasets.ClassLabel(names=_product_categories), 
-                'sub_product': datasets.ClassLabel(name=_sub_product_categories), 
+                'date_received' : datasets.Value("timestamp[s]"),
+                'product': datasets.ClassLabel(names=_PRODUCT_CATEGORIES), 
+                'sub_product': datasets.ClassLabel(names=_SUB_PRODUCT_CATEGORIES), 
                 'issue': datasets.Value("string"), 
                 'sub_issue': datasets.Value("string"),
                 'complaint_text': datasets.Value("string"), 
@@ -83,12 +77,12 @@ class Imagewang(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        path = dl_manager.download_and_extract(self.config.url)
+        path = dl_manager.download_and_extract(_url)
 
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,
-                gen_kwargs={"datapath": path},
+                gen_kwargs={"filepath": path},
             )
         ]
 
@@ -100,8 +94,7 @@ class Imagewang(datasets.GeneratorBasedBuilder):
             )
             for id_, row in enumerate(csv_reader):
                 date_received, product, sub_product, issue, sub_issue, complaint_text, company_public_response, company, state, zip_code, tags, consumer_consent_provided, submitted_via, date_sent_to_company, company_response_to_consumer, timely_response, consumer_disputed, complaint_id    = row
-                yield id_, {"Date Recieved": date_received, "Product": product, "Sub Product": sub_product, "Issue": issue, "Sub Issue", "Complaint Text" : complaint_text, "Company Public Response" :company_public_response, "Company" : company, "State": state, "Zip Code" :zip_code, "tags" : tags, "Consumer Consent Provided" : consumer_consent_provided, "Submitted via": submitted_via, "Date sent to company" :  date_sent_to_company, "Company Response To Consumer" : company_response_to_consumer, 
-                            "Timely response" : timely_response, "Consumer disputed":consumer_disputed , "Complaint ID": complaint_id }
+                yield id_, {"Date Recieved": date_received, "Product": product, "Sub Product": sub_product, "Issue": issue, "Sub Issue":sub_issue, "Complaint Text" : complaint_text, "Company Public Response" :company_public_response, "Company" : company, "State": state, "Zip Code" :zip_code, "tags" : tags, "Consumer Consent Provided" : consumer_consent_provided, "Submitted via": submitted_via, "Date sent to company" :  date_sent_to_company, "Company Response To Consumer" : company_response_to_consumer, "Timely response" : timely_response, "Consumer disputed":consumer_disputed , "Complaint ID": complaint_id }
 
 _TAGS = ['Servicemember', 'Older American', 'Older American, Servicemember']
 
