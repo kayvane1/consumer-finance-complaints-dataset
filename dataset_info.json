@@ -1,77 +1,252 @@
 {
-  "allocine": {
-    "description": " Allocine Dataset: A Large-Scale French Movie Reviews Dataset.\n This is a dataset for binary sentiment classification, made of user reviews scraped from Allocine.fr.\n It contains 100k positive and 100k negative reviews divided into 3 balanced splits: train (160k reviews), val (20k) and test (20k).\n",
-    "citation": "@misc{blard2019allocine,\n  author = {Blard, Theophile},\n  title = {french-sentiment-analysis-with-bert},\n  year = {2020},\n  publisher = {GitHub},\n  journal = {GitHub repository},\n  howpublished={\\url{https://github.com/TheophileBlard/french-sentiment-analysis-with-bert}},\n}\n",
-    "homepage": "https://github.com/TheophileBlard/french-sentiment-analysis-with-bert",
-    "license": "",
-    "features": {
-      "review": {
-        "dtype": "string",
-        "id": null,
-        "_type": "Value"
-      },
-      "label": {
-        "num_classes": 2,
-        "names": [
-          "neg",
-          "pos"
-        ],
-        "names_file": null,
-        "id": null,
-        "_type": "ClassLabel"
-      }
+  "description": "The Consumer Complaint Database is a collection of complaints about consumer financial products and services that we sent to companies for response. Complaints are published after the company responds, confirming a commercial relationship with the consumer, or after 15 days, whichever comes first. Complaints referred to other regulators, such as complaints about depository institutions with less than $10 billion in assets, are not published in the Consumer Complaint Database. The database generally updates daily.\nThere are two features:\n  - article: text of news article, used as the document to be summarized\n  - highlights: joined text of highlights with <s> and </s> around each\n    highlight, which is the target summary\n",
+  "citation": "@\n",
+  "homepage": "https://www.consumerfinance.gov/data-research/consumer-complaints/",
+  "license": "https://cfpb.github.io/source-code-policy/",
+  "features": {
+    "Date Received": {
+      "dtype": "timestamp[s]",
+      "id": null,
+      "_type": "Value"
     },
-    "post_processed": null,
-    "supervised_keys": null,
-    "task_templates": [
-      {
-        "task": "text-classification",
-        "text_column": "review",
-        "label_column": "label",
-        "labels": [
-          "neg",
-          "pos"
-        ]
-      }
-    ],
-    "builder_name": "allocine_dataset",
-    "config_name": "allocine",
-    "version": {
-      "version_str": "1.0.0",
-      "description": null,
-      "major": 1,
-      "minor": 0,
-      "patch": 0
+    "Product": {
+      "num_classes": 18,
+      "names": [
+        "Credit reporting, credit repair services, or other personal consumer reports",
+        "Debt collection",
+        "Mortgage",
+        "Credit card or prepaid card",
+        "Checking or savings account",
+        "Credit reporting",
+        "Student loan",
+        "Money transfer, virtual currency, or money service",
+        "Credit card",
+        "Vehicle loan or lease",
+        "Bank account or service",
+        "Payday loan, title loan, or personal loan",
+        "Consumer Loan",
+        "Payday loan",
+        "Money transfers",
+        "Prepaid card",
+        "Other financial service",
+        "Virtual currency"
+      ],
+      "names_file": null,
+      "id": null,
+      "_type": "ClassLabel"
     },
-    "splits": {
-      "train": {
-        "name": "train",
-        "num_bytes": 91330696,
-        "num_examples": 160000,
-        "dataset_name": "allocine_dataset"
-      },
-      "validation": {
-        "name": "validation",
-        "num_bytes": 11546250,
-        "num_examples": 20000,
-        "dataset_name": "allocine_dataset"
-      },
-      "test": {
-        "name": "test",
-        "num_bytes": 11547697,
-        "num_examples": 20000,
-        "dataset_name": "allocine_dataset"
-      }
+    "Sub Product": {
+      "num_classes": 77,
+      "names": [
+        "Credit reporting",
+        "General-purpose credit card or charge card",
+        "Checking account",
+        "Other debt",
+        "Second mortgage",
+        "Conventional home mortgage",
+        "I do not know",
+        "Credit card debt",
+        "Medical debt",
+        "Federal student loan servicing",
+        "FHA mortgage",
+        "Conventional fixed mortgage",
+        "Loan",
+        "Other (i.e. phone, health club, etc.)",
+        "Store credit card",
+        "Installment loan",
+        "Credit card",
+        "Medical",
+        "Mobile or digital wallet",
+        "Private student loan",
+        "Non-federal student loan",
+        "Domestic (US) money transfer",
+        "VA mortgage",
+        "Vehicle loan",
+        "Auto debt",
+        "Payday loan",
+        "Conventional adjustable mortgage (ARM)",
+        "Other personal consumer report",
+        "Payday loan debt",
+        "Savings account",
+        "Virtual currency",
+        "Other bank product/service",
+        "Other type of mortgage",
+        "Other banking product or service",
+        "Other mortgage",
+        "International money transfer",
+        "Lease",
+        "General-purpose prepaid card",
+        "Home equity loan or line of credit (HELOC)",
+        "Government benefit card",
+        "Mortgage debt",
+        "Personal line of credit",
+        "Home equity loan or line of credit",
+        "Federal student loan debt",
+        "Private student loan debt",
+        "Credit repair services",
+        "Title loan",
+        "Auto",
+        "Vehicle lease",
+        "Mortgage",
+        "Reverse mortgage",
+        "General purpose card",
+        "CD (Certificate of Deposit)",
+        "Federal student loan",
+        "Payroll card",
+        "Debt settlement",
+        "Check cashing service",
+        "Traveler's check or cashier's check",
+        "Gift card",
+        "(CD) Certificate of deposit",
+        "Money order",
+        "Foreign currency exchange",
+        "Refund anticipation check",
+        "Gift or merchant card",
+        "Cashing a check without an account",
+        "ID prepaid card",
+        "Mobile wallet",
+        "Government benefit payment card",
+        "Pawn loan",
+        "Other special purpose card",
+        "Check cashing",
+        "Credit repair",
+        "Traveler\u2019s/Cashier\u2019s checks",
+        "Transit card",
+        "Student prepaid card",
+        "Electronic Benefit Transfer / EBT card",
+        ""
+      ],
+      "names_file": null,
+      "id": null,
+      "_type": "ClassLabel"
     },
-    "download_checksums": {
-      "https://github.com/TheophileBlard/french-sentiment-analysis-with-bert/raw/master/allocine_dataset/data.tar.bz2": {
-        "num_bytes": 66625305,
-        "checksum": "8c49a8cac783da201697ed1a91b36d2f6618222b3b7ea1c2996f2a3fbc37dfb4"
-      }
+    "Issue": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
     },
-    "download_size": 66625305,
-    "post_processing_size": null,
-    "dataset_size": 114424643,
-    "size_in_bytes": 181049948
-  }
+    "Sub Issue": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Complaint Text": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Company Public Response": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Company": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "State": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Zip Code": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Tags": {
+      "num_classes": 4,
+      "names": [
+        "Servicemember",
+        "Older American",
+        "Older American, Servicemember",
+        ""
+      ],
+      "names_file": null,
+      "id": null,
+      "_type": "ClassLabel"
+    },
+    "Consumer Consent Provided": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Submitted via": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Date Sent To Company": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Company Response To Consumer": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Timely Response": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Consumer Disputed": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    },
+    "Complaint ID": {
+      "dtype": "string",
+      "id": null,
+      "_type": "Value"
+    }
+  },
+  "post_processed": null,
+  "supervised_keys": null,
+  "task_templates": [
+    {
+      "task": "text-classification",
+      "text_column": "Complaint Text",
+      "label_column": "Product"
+    },
+    {
+      "task": "text-classification",
+      "text_column": "Complaint Text",
+      "label_column": "Sub Product"
+    },
+    {
+      "task": "text-classification",
+      "text_column": "Complaint Text",
+      "label_column": "Tags"
+    }
+  ],
+  "builder_name": "consumer_complaints",
+  "config_name": "default",
+  "version": {
+    "version_str": "0.0.0",
+    "description": null,
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  },
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 1594157798,
+      "num_examples": 2443070,
+      "dataset_name": "consumer_complaints"
+    }
+  },
+  "download_checksums": {
+    "https://files.consumerfinance.gov/ccdb/complaints.csv.zip": {
+      "num_bytes": 396176327,
+      "checksum": "2fda091fc902d5726155067c12b0892a41aec4e3232e3b1e05bb30a8c2d375ed"
+    }
+  },
+  "download_size": 396176327,
+  "post_processing_size": null,
+  "dataset_size": 1594157798,
+  "size_in_bytes": 1990334125
 }
