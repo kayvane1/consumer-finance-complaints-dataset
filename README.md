@@ -64,17 +64,29 @@ TODO: Add YAML tags here. Copy-paste the tags obtained with the online tagging a
 
 ### Supported Tasks and Leaderboards
 
-[More Information Needed]
+Text Classification Tasks
+
+| Task      | Label Name | Description | SOTA |
+| ----------- | ----------- |----------- | ----------- |
+| Text Classification      | Product| Predict the related product of a complaint | N/A |
+
+| Task      | Label Name | Description | SOTA |
+| ----------- | ----------- |----------- | ----------- |
+| Text Classification      | Sub-Product| Predict the related sub product of a complaint | N/A |
+
+| Task      | Label Name | Description | SOTA |
+| ----------- | ----------- |----------- | ----------- |
+| Text Classification      | Tags | Predict whether a complaint has been made by someone elderly or a service person| N/A |
 
 ### Languages
 
-[More Information Needed]
+English
 
 ## Dataset Structure
 
 ### Data Instances
 
-[More Information Needed]
+This dataset is a point in time extract of the database, the database increases in size every day
 
 ### Data Fields
 
@@ -82,65 +94,67 @@ TODO: Add YAML tags here. Copy-paste the tags obtained with the online tagging a
 
 ### Data Splits
 
-[More Information Needed]
+This dataset only contains a TRAIN set - this can be further split into TRAIN, TEST and VALIDATE subsets with the datasets library
 
 ## Dataset Creation
 
 ### Curation Rationale
 
-[More Information Needed]
+Open sourcing customer complaints
 
 ### Source Data
 
+https://cfpb.github.io/api/ccdb/
+
 #### Initial Data Collection and Normalization
 
-[More Information Needed]
+This database is maintained by the Consumer Financial Protection Bureau
 
 #### Who are the source language producers?
 
-[More Information Needed]
+Englisgh
 
 ### Annotations
 
 #### Annotation process
 
-[More Information Needed]
+User submitted to the CFPB
 
 #### Who are the annotators?
 
-[More Information Needed]
+N/A
 
 ### Personal and Sensitive Information
 
-[More Information Needed]
+All PII data has been anonymised
 
 ## Considerations for Using the Data
 
 ### Social Impact of Dataset
 
-[More Information Needed]
+N/A
 
 ### Discussion of Biases
 
-[More Information Needed]
+N/A
 
 ### Other Known Limitations
 
-[More Information Needed]
+N/A
 
 ## Additional Information
 
 ### Dataset Curators
 
-[More Information Needed]
+https://cfpb.github.io/api/ccdb/
 
 ### Licensing Information
 
-[More Information Needed]
+https://cfpb.github.io/source-code-policy/
 
 ### Citation Information
 
-[More Information Needed]
+N/A
 
 ### Contributions
 
