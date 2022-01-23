@@ -1,8 +1,26 @@
 ---
-TODO: Add YAML tags here. Copy-paste the tags obtained with the online tagging app: https://huggingface.co/spaces/huggingface/datasets-tagging
+annotations_creators:
+- crowdsourced
+language_creators:
+- crowdsourced
+languages:
+- en-US
+licenses:
+- upl-1.0
+multilinguality:
+- monolingual
+pretty_name: consumer-finance-complaints
+size_categories:
+- unknown
+source_datasets:
+- original
+task_categories:
+- text-classification
+task_ids:
+- topic-classification
 ---
 
-# Dataset Card for [Dataset Name]
+# Dataset Card for Consumer Finance Complaints
 
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
