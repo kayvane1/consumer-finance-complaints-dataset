@@ -1,17 +1,19 @@
 import datasets
 from datasets import TextClassification
 import csv
+import textwrap
 
 logger = datasets.logging.get_logger(__name__)
 
 
-_DESCRIPTION = """\
+_DESCRIPTION = textwrap.dedent("""\
 The Consumer Complaint Database is a collection of complaints about consumer financial products and services that we sent to companies for response. Complaints are published after the company responds, confirming a commercial relationship with the consumer, or after 15 days, whichever comes first. Complaints referred to other regulators, such as complaints about depository institutions with less than $10 billion in assets, are not published in the Consumer Complaint Database. The database generally updates daily.
 There are multiple Text Classification problems that can be solved with this dataset:
 - Complaint Type Identification
 - Complaint Sub-Product Identification
 - Complaint from vulnerable or Service-person
 """
+)
 
 _CITATION = """\
 @Consumer Financial Protection Bureau
